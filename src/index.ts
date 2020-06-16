@@ -9,7 +9,7 @@ interface Action {
   position: number;
 }
 
-new Bot('Tic Tac Toe', 'Robbot')
+new Bot('Tic Tac Toe', 'Demobot')
   .onError(console.error)
   .onState(raw => {
     const state: State = Object.assign({} as State, raw);
