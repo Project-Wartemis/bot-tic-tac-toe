@@ -9,13 +9,22 @@ interface Action {
   position: number;
 }
 
-new Bot('Tic Tac Toe', 'Demobot')
-  .onError(console.error)
-  .onState(raw => {
-    const state: State = Object.assign({} as State, raw);
-    console.log(state);
+class BotTicTacToe extends Bot {
+
+  constructor() {
+    super('Tic Tac Toe', 'Demobot');
+  }
+
+  handleError(error: string): void {
+    console.error(error);
+  }
+
+  handleState(state: State): Action {
     return {
       position: state.board.indexOf(' ')
-    } as Action;
-  })
-  .start();
+    };
+  }
+}
+
+const bot = new BotTicTacToe();
+bot.start();
